@@ -16,11 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.conf.urls.static import static
-from django.urls import path
+from django.urls import path, include
 
 from DRF_image_upload_app import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+
+    path('dj-rest-auth/', include('dj_rest_auth.urls')),
+    path("api/v1/accounts/register/", include("dj_rest_auth.registration.urls")),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

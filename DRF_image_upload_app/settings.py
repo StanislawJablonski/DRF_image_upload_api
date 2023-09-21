@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 import os
 from pathlib import Path
+from environs import Env
+
+env = Env()
+env.read_env()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -37,9 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'whitenoise.runserver_nostatic',
+    'django.contrib.sites',
     'rest_framework',
-    'accounts',
-    'images',
+    'accounts.apps.AccountsConfig',
+    'images.apps.ImagesConfig',
+    'rest_framework.authtoken',
+    'dj_rest_auth',
+    'dj_rest_auth.registration',
+    'corsheaders',
+    'allauth',
+    'allauth.account',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -50,7 +63,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.cache.UpdateCacheMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.cache.FetchFromCacheMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
 ]
+
 
 ROOT_URLCONF = 'DRF_image_upload_app.urls'
 
@@ -71,6 +89,7 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'DRF_image_upload_app.wsgi.application'
 
 
@@ -79,8 +98,12 @@ WSGI_APPLICATION = 'DRF_image_upload_app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': "django.db.backends.postgresql",
+        'NAME': 'drfimages',
+        'USER': 'user',
+        'PASSWORD': 'password',
+        'HOST': os.environ.get('POSTGRES_HOST', 'localhost'),
+        'PORT': os.environ.get('POSTGRES_PORT', '5432'),
     }
 }
 
@@ -133,4 +156,29 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTH_USER_MODEL = "accounts.User"
+
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": [
+        "rest_framework.authentication.SessionAuthentication",
+        'dj_rest_auth.jwt_auth.JWTCookieAuthentication',
+    ],
+    "DEFAULT_PERMISSION_CLASSES": [
+        "rest_framework.permissions.IsAuthenticated",
+    ],
+    'EXCEPTION_HANDLER': 'ImageUploadApi.utils.custom_exception_handler',
+    "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
+    "PAGE_SIZE": 5,
+}
+
+EMAIL_BACKEND = "django.core.mail.backends.console.EmailBackend"
+REST_AUTH = {
+    'USE_JWT': True,
+    'JWT_AUTH_COOKIE': 'image-app-auth',
+    'JWT_AUTH_REFRESH_COOKIE': 'image-app-token'
+}
+
+
+MIN_EXPIRING_LINK_TIME = 30
+MAX_EXPIRING_LINK_TIME = 30000
+MAX_FILE_SIZE = 15 * 1024 * 1024
 
