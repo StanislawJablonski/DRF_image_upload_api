@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'corsheaders',
     'allauth',
     'allauth.account',
-    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -182,3 +181,19 @@ MIN_EXPIRING_LINK_TIME = 30
 MAX_EXPIRING_LINK_TIME = 30000
 MAX_FILE_SIZE = 15 * 1024 * 1024
 
+TIERS_CONFIG = {
+    'BASIC': dict(
+        thumbnail_size=dict(width=200, height=200),
+        can_get_original_image=False,
+        can_generate_expiring_links=False,
+    ),
+    'PREMIUM': dict(
+        thumbnail_size=dict(width=200, height=400),
+        can_generate_expiring_links=False,
+        can_get_original_image=True,
+    ),
+    'ENTERPRISE': dict(
+        can_generate_expiring_links=True,
+        can_get_original_image=True,
+    ),
+}
