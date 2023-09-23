@@ -2,13 +2,24 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69523f06-130b-4a0e-b873-134cfea56734" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/accounts/migrations/0003_accounttier_can_get_original_image.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/accounts/test.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/test.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/assets/windows.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/migrations/0002_rename_created_date_image_created_at_and_more.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/migrations/0003_alter_image_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/migrations/0004_alter_image_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/serializers.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/images/utils.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/DRF_image_upload_app/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/DRF_image_upload_app/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DRF_image_upload_app/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/DRF_image_upload_app/urls.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/accounts/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/accounts/signals.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/signals.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/test.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/accounts/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/accounts/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/images/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/DRF_image_upload_app/utils.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/images/tests.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/validators.py" beforeDir="false" afterPath="$PROJECT_DIR$/images/validators.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/images/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/images/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +49,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ImageUploaderApi-main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
@@ -48,6 +59,7 @@
       <option name="PARENT_ENVS" value="true" />
       <envs>
         <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="DRF_image_upload_app.settings" />
       </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="" />
@@ -79,7 +91,10 @@
       <workItem from="1695278620513" duration="2706000" />
       <workItem from="1695281539313" duration="4173000" />
       <workItem from="1695288787201" duration="7237000" />
-      <workItem from="1695364619271" duration="989000" />
+      <workItem from="1695364619271" duration="8177000" />
+      <workItem from="1695379608846" duration="2133000" />
+      <workItem from="1695381767302" duration="7512000" />
+      <workItem from="1695449691025" duration="3579000" />
     </task>
     <servers />
   </component>

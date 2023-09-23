@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'whitenoise.runserver_nostatic',
-    'django.contrib.sites',
+    #'django.contrib.sites',
     'rest_framework',
     'accounts.apps.AccountsConfig',
     'images.apps.ImagesConfig',
@@ -52,6 +52,8 @@ INSTALLED_APPS = [
     'corsheaders',
     'allauth',
     'allauth.account',
+    'drf_yasg',
+    'django_cleanup.apps.CleanupConfig',
 ]
 
 MIDDLEWARE = [
@@ -164,7 +166,7 @@ REST_FRAMEWORK = {
     "DEFAULT_PERMISSION_CLASSES": [
         "rest_framework.permissions.IsAuthenticated",
     ],
-    'EXCEPTION_HANDLER': 'ImageUploadApi.utils.custom_exception_handler',
+    'EXCEPTION_HANDLER': 'DRF_image_upload_app.utils.custom_exception_handler',
     "DEFAULT_PAGINATION_CLASS": "rest_framework.pagination.LimitOffsetPagination",
     "PAGE_SIZE": 5,
 }
@@ -179,6 +181,7 @@ REST_AUTH = {
 
 MIN_EXPIRING_LINK_TIME = 30
 MAX_EXPIRING_LINK_TIME = 30000
+DEFAULT_EXPIRING_LINK_TIME = 30000
 MAX_FILE_SIZE = 15 * 1024 * 1024
 
 TIERS_CONFIG = {

@@ -26,3 +26,8 @@ class AccountTier(models.Model):
     def get_thumbnail_sizes(self):
         return self.thumbnail_sizes.all()
 
+    @property
+    def get_dimensions(self):
+        thumbnails = self.get_thumbnail_sizes
+        return [t.height for t in thumbnails]
+
