@@ -11,7 +11,7 @@ from images.serializers import (
     ImageCreateSerializer,
     ImageListSerializer,
 )
-from images.utils import ExpiringLinkUtils
+from images.mixins import ExpiringLinkMixin
 
 
 class ImageListView(generics.ListAPIView):
@@ -26,7 +26,7 @@ class ImageCreateView(generics.CreateAPIView):
     serializer_class = ImageCreateSerializer
 
 
-class ExpiringLinkListCreateView(generics.ListCreateAPIView, ExpiringLinkUtils):
+class ExpiringLinkListCreateView(generics.ListCreateAPIView, ExpiringLinkMixin):
     def get_serializer_class(self):
         if self.request.method == 'POST':
             return ExpiringLinkCreateSerializer
@@ -49,7 +49,7 @@ class ExpiringLinkListCreateView(generics.ListCreateAPIView, ExpiringLinkUtils):
         return Image.objects.filter(user=self.request.user)
 
 
-class ExpiringLinkDetailView(generics.RetrieveAPIView, ExpiringLinkUtils):
+class ExpiringLinkDetailView(generics.RetrieveAPIView, ExpiringLinkMixin):
     queryset = ExpiringLink.objects.all()
 
     def get_object(self):

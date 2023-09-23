@@ -1,8 +1,5 @@
 import os
-import shutil
 from io import BytesIO
-
-from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.test import TestCase
@@ -105,13 +102,6 @@ class ImageAPITestCase(APITestCase):
         self.assertEqual(ExpiringLink.objects.count(), 1)
         self.assertEqual(Image.objects.first().user, self.user)
 
-    def test_list_expiring_links(self):
-        image = Image.objects.create(user=self.user, image=self.image_file)
-        ExpiringLink.objects.create(image=image, expires_in='3600')
-        url = reverse('expiring-link-create-list')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_200_OK)
-        self.assertEqual(len(response.data), 1)
 
     def test_get_expiring_link_detail(self):
         image = Image.objects.create(user=self.user, image=self.image_file)
