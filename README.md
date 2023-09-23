@@ -11,7 +11,7 @@ PUBLIC URLS
 - http://127.0.0.1:8000/api/v1/accounts/login/
 
 ADMIN URLS
-- http://127.0.0.1:8000/admin/
+- http://127.0.0.1:8000/admin/docker-compose exec web python manage.py migrate --noinput
 
 AUTHENTICATED USERS
 - http://127.0.0.1:8000/api/v1/images/

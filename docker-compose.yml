@@ -1,0 +1,70 @@
+version: "1"
+
+services:
+  db:
+    container_name: drf_image_upload_database
+    restart: always
+    image: postgres:14.0-alpine
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  redis:
+    restart: unless-stopped
+    image: redis:7.0.8-alpine3.17
+
+  backend:
+    container_name: drf_image_upload_backend
+    restart: always
+    build:
+      context: ./
+      dockerfile: ./docker/local/Dockerfile
+    volumes:
+        - .:/app
+    image: drf_image_upload_backend
+    ports:
+      - "8000:8000"
+    env_file:
+      - ./docker/local/.env-dev
+    depends_on:
+      - db
+      - redis
+    command: sh -c "python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000"
+
+  celery_worker:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/local/Dockerfile
+    image: drf_image_upload_celery
+    volumes:
+      - .:/app
+    env_file:
+      - ./docker/local/.env-dev
+    depends_on:
+      - backend
+      - redis
+    command: sh -c "celery -A DRF_image_upload_app worker -l INFO"
+
+  flower:
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/local/Dockerfile
+    image: drf_image_upload_celery_flower
+    volumes:
+      - .:/app
+    env_file:
+      - ./docker/local/.env-dev
+    depends_on:
+      - celery_worker
+      - redis
+      - db
+    command: sh -c "celery -A DRF_image_upload_app flower"
+
+volumes:
+  postgres_data:
