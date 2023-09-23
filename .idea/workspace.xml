@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="69523f06-130b-4a0e-b873-134cfea56734" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.dockerignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Dockerfile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/images/mixins.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/tests.py" beforeDir="false" afterPath="$PROJECT_DIR$/images/tests.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/images/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/images/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/images/views.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +33,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../ImageUploaderApi-main" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
@@ -85,6 +79,7 @@
       <workItem from="1695379608846" duration="2133000" />
       <workItem from="1695381767302" duration="7512000" />
       <workItem from="1695449691025" duration="7965000" />
+      <workItem from="1695459525277" duration="1032000" />
     </task>
     <servers />
   </component>
